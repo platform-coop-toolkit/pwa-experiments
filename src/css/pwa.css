@@ -1,3 +1,19 @@
-body {
-    line-height: 1.5;
+@import url('https://rsms.me/inter/inter.css');
+
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+	html {
+		font-family: 'Inter var', sans-serif;
+	}
+}
+
+header,
+main,
+footer {
+	margin: auto;
+    max-width: 70ch;
+	padding: 2ch;
 }
