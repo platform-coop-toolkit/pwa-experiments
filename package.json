@@ -7,7 +7,7 @@
     "build": "npm run build:site",
     "build:site": "npx @11ty/eleventy",
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:css": "stylelint",
+    "lint:css": "stylelint src/css/*.css",
     "lint:js": "xo",
     "serve": "npx @11ty/eleventy --serve",
     "test": "npm run lint",
