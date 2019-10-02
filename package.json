@@ -1,0 +1,54 @@
+{
+  "name": "@platform-coop-toolkit/pwa-experiments",
+  "version": "0.1.0",
+  "description": "Experiments with Progressive Web Application (PWA) functionality.",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "npm run build:site",
+    "build:site": "npx @11ty/eleventy",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint",
+    "lint:js": "xo",
+    "serve": "npx @11ty/eleventy --serve",
+    "test": "npm run lint",
+    "watch": "npx @11ty/eleventy --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.js": [
+      "npm run lint:js"
+    ],
+    "./**/*.css": [
+      "npm run lint:css"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platform-coop-toolkit/pwa-experiments.git"
+  },
+  "keywords": [
+    "indexeddb",
+    "localstorage",
+    "pwa",
+    "serviceworker"
+  ],
+  "author": "OCAD University <platform-coop-development-kit@lists.inclusivedesign.ca>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/platform-coop-toolkit/pwa-experiments/issues"
+  },
+  "homepage": "https://github.com/platform-coop-toolkit/pwa-experiments#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.9.0",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.1",
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-order": "^3.1.1",
+    "xo": "^0.25.3"
+  }
+}

@@ -1,0 +1,24 @@
+---
+title: PWA Experiments
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pwa.css" />  
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        {{ title }}
+      </h1>
+
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+  </body>
+  <script src="/js/pwa.js" />
+</html>
