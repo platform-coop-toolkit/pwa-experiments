@@ -11,11 +11,11 @@ title: PWA Experiments
 		<title>{{ title }}</title>
 	</head>
 	<body>
+		{% if offline %}
+			<div class="offline-tag">OFFLINE MODE</div>
+		{% endif %}
 		<header>
-			<h1>
-
-				{{ title }}
-			</h1>
+			<h1>{{ title }}</h1>
 		</header>
 		<main>
 			<article>
@@ -29,14 +29,14 @@ title: PWA Experiments
 					<legend>Settings</legend>
 					<label for="lang">
 						Site Language
-						<select id="lang" hidden>
+						<select id="lang" hidden{% if offline %} disabled{% endif %}>
 							{% for code, label in languages %}
 								<option value="{{ code }}">{{ label }}</option>
 							{% endfor %}
 						</select>
 					</label>
 
-					<input id="submit" type="submit" value="Save"/>
+					<input id="submit" type="submit" value="Save" {% if offline %}disabled {% endif %}/>
 				</fieldset>
 			</form>
 		</footer>

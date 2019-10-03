@@ -1,16 +1,37 @@
-/* global addEventListener, caches, fetch */
+/* global addEventListener, caches, clients, fetch, skipWaiting */
 
-const staticCacheName = 'staticFiles';
+const version = '20191003.8';
+const staticCacheName = version + 'staticFiles';
 
 addEventListener('install', installEvent => {
+	skipWaiting();
 	installEvent.waitUntil(
 		caches.open(staticCacheName)
 			.then(staticCache => {
 				return staticCache.addAll([
 					'/css/pwa.css',
-					'/js/pwa.js'
+					'/js/pwa.js',
+					'/offline/index.html'
 				]);
 			})
+	);
+});
+
+addEventListener('activate', activateEvent => {
+	activateEvent.waitUntil(
+		caches.keys().then(cacheNames => {
+			return Promise.all(
+				cacheNames.map(cacheName => {
+					if (cacheName !== staticCacheName) {
+						return caches.delete(cacheName);
+					}
+
+					return true;
+				})
+			);
+		}).then(() => {
+			return clients.claim();
+		})
 	);
 });
 
@@ -23,7 +44,10 @@ addEventListener('fetch', fetchEvent => {
 					return responseFromCache;
 				}
 
-				return fetch(request);
+				return fetch(request)
+					.catch(() => {
+						return caches.match('/offline/index.html');
+					});
 			})
 	);
 });
