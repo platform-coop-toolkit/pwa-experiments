@@ -22,8 +22,24 @@ title: PWA Experiments
 			</article>
 		</main>
 		<footer>
+			<div id="notice" aria-live="polite"></div>
+			<form id="settings">
+				<fieldset>
+					<legend>Settings</legend>
+					<label for="lang">
+						Site Language
+						<select id="lang" hidden>
+							{% for code, label in languages %}
+							<option value="{{ code }}">{{ label }}</option>
+							{% endfor %}
+						</select>
+					</label>
+
+					<input id="submit" type="submit" value="Save" />
+				</fieldset>
+			</form>
 		</footer>
   </body>
-  <script src="/js/pwa.js" />
-  <script src="/js/serviceworker.js" />
+  <script src="/js/pwa.js"></script>
+  <script src="/js/service-worker.js"></script>
 </html>
