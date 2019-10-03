@@ -50,5 +50,19 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-order": "^3.1.1",
     "xo": "^0.25.3"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-recommended",
+    "plugins": [
+      "stylelint-order"
+    ],
+    "rules": {
+      "order/order": [
+        "custom-properties",
+        "declarations"
+      ],
+      "order/properties-alphabetical-order": true,
+      "selector-nested-pattern": "^(?!&__|&--).*$"
+    }
   }
 }
