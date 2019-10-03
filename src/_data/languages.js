@@ -1,4 +1,5 @@
 module.exports = {
+	en: 'English',
 	de: 'German',
 	pt: 'Portuguese',
 	hi: 'Hindi',

@@ -3,16 +3,17 @@ title: PWA Experiments
 ---
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css" />
-    <link rel="stylesheet" href="/css/pwa.css" />
-    <title>{{ title }}</title>
-  </head>
-  <body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css"/>
+		<link rel="stylesheet" href="/css/pwa.css"/>
+		<title>{{ title }}</title>
+	</head>
+	<body>
 		<header>
 			<h1>
+
 				{{ title }}
 			</h1>
 		</header>
@@ -30,16 +31,22 @@ title: PWA Experiments
 						Site Language
 						<select id="lang" hidden>
 							{% for code, label in languages %}
-							<option value="{{ code }}">{{ label }}</option>
+								<option value="{{ code }}">{{ label }}</option>
 							{% endfor %}
 						</select>
 					</label>
 
-					<input id="submit" type="submit" value="Save" />
+					<input id="submit" type="submit" value="Save"/>
 				</fieldset>
 			</form>
 		</footer>
-  </body>
-  <script src="/js/pwa.js"></script>
-  <script src="/js/service-worker.js"></script>
+	</body>
+	<script src="/js/pwa.js"></script>
+	<script>
+		if (navigator.serviceWorker) {
+			navigator
+				.serviceWorker
+				.register('/service-worker.js');
+		}
+	</script>
 </html>
