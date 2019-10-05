@@ -1,6 +1,3 @@
----
-title: PWA Experiments
----
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,37 +5,36 @@ title: PWA Experiments
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css"/>
 		<link rel="stylesheet" href="/css/pwa.css"/>
-		<title>{{ title }}</title>
+		<title>{{ title }} | PWA Experiments</title>
 	</head>
 	<body>
 		{% if offline %}
-			<div class="offline-tag">OFFLINE MODE</div>
+			<div class="offline-tag">Offline Mode</div>
 		{% endif %}
 		<header>
 			<h1>{{ title }}</h1>
+			<nav>
+				<ul class="menu">
+					{% for item in navigation %}
+						{% set currentAttribute = '' %}
+						{% if page.url == item.url %}
+							{% set currentAttribute = ' aria-current="page"' %}
+						{% endif %}
+
+						<li>
+							<a href="{{ item.url }}"{{ currentAttribute | safe }}>{{ item.text }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
 		</header>
 		<main>
 			<article>
-				{{ content | safe }}
+				{% block content %}{% endblock %}
 			</article>
 		</main>
 		<footer>
-			<div id="notice" aria-live="polite"></div>
-			<form id="settings">
-				<fieldset>
-					<legend>Settings</legend>
-					<label for="lang">
-						Site Language
-						<select id="lang" hidden{% if offline %} disabled{% endif %}>
-							{% for code, label in languages %}
-								<option value="{{ code }}">{{ label }}</option>
-							{% endfor %}
-						</select>
-					</label>
-
-					<input id="submit" type="submit" value="Save" {% if offline %}disabled {% endif %}/>
-				</fieldset>
-			</form>
+			{% include 'partials/settings.njk' %}
 		</footer>
 	</body>
 	<script src="/js/pwa.js"></script>

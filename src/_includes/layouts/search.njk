@@ -1,0 +1,29 @@
+{% extends 'layouts/base.njk' %}
+
+{% block content %}
+	{{ content | safe }}
+	<form>
+		<label for="search">
+			Search
+		</label>
+		<input id="search" type="search" name="s"/>
+		{% for taxonomy, terms in filters %}
+			<fieldset>
+				<legend>{{ taxonomy | capitalize }}</legend>
+				<ul class="{{ taxonomy }}">
+					{% for term in terms %}
+						<li>
+							<input id="{{ term }}" name="{{ taxonomy }}[{{ term }}]" type="checkbox" value="{{ term }}"/>
+							<label for="{{ term }}">{{ term | capitalize }}</label>
+						</li>
+					{% endfor %}
+				</ul>
+			</fieldset>
+		{% endfor %}
+		<input id="submit" type="submit" value="Search" {% if offline %}disabled {% endif %}/>
+	</form>
+
+	<div id="searches">
+		<h2>Saved Searches</h2>
+	</div>
+{% endblock %}

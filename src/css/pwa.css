@@ -25,6 +25,59 @@ header {
 	padding-top: 1rem;
 }
 
+nav {
+	margin-top: 1rem;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 0.5rem;
+}
+
+nav a,
+nav a:visited {
+	--fg: black;
+	--bg: white;
+	--border: black;
+
+	background-color: var(--bg);
+	border: solid 2px var(--border);
+	color: var(--fg);
+	display: block;
+	padding: 0.25rem 1rem;
+	text-decoration: none;
+}
+
+nav a:hover {
+	--fg: white;
+	--bg: black;
+}
+
+nav a:focus {
+	box-shadow: inset 0 0 0 2px var(--fg);
+}
+
+nav a:active {
+	--fg: white;
+	--bg: black;
+
+	box-shadow: inset 0 0 0 2px var(--fg);
+}
+
+nav a[aria-current] {
+	--fg: white;
+	--bg: black;
+}
+
+nav a[aria-current]:hover,
+nav a[aria-current]:focus {
+	box-shadow: inset 0 0 0 2px var(--fg);
+}
+
+nav li:first-child a {
+	margin-left: 0;
+}
+
 fieldset {
 	border: solid 2px black;
 	padding: 0.5rem 1rem 1rem;
@@ -35,13 +88,28 @@ select {
 	display: block;
 	margin-top: 0.5rem;
 }
+[type="checkbox"] {
+	display: inline-block;
+}
+
+form * + * {
+	margin-top: 1.5rem;
+}
 
 fieldset * + * {
 	margin-top: 1.5rem;
 }
 
-fieldset legend + * {
+legend + * {
 	margin-top: 1rem;
+}
+
+label + * {
+	margin-top: 0.5rem;
+}
+
+fieldset li + li {
+	margin-top: 0;
 }
 
 [type="submit"] {
@@ -141,6 +209,7 @@ fieldset legend + * {
 	color: #fff;
 	display: block;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 @media screen and (min-width: 1024px) {

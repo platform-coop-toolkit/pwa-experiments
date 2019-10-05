@@ -1,0 +1,16 @@
+<div id="notice" aria-live="polite"></div>
+<form id="settings">
+	<fieldset>
+		<legend>Settings</legend>
+		<label for="lang">
+			Site Language
+		</label>
+		<select id="lang" hidden{% if offline %} disabled{% endif %}>
+			{% for code, label in languages %}
+				<option value="{{ code }}">{{ label }}</option>
+			{% endfor %}
+		</select>
+
+		<input id="submit" type="submit" value="Save" {% if offline %}disabled {% endif %}/>
+	</fieldset>
+</form>
