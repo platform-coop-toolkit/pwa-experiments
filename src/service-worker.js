@@ -1,6 +1,6 @@
 /* global addEventListener, caches, clients, fetch, skipWaiting */
 
-const version = '20191003.8';
+const version = '20191004.8';
 const staticCacheName = version + 'staticFiles';
 
 addEventListener('install', installEvent => {

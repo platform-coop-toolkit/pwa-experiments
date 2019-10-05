@@ -25,6 +25,59 @@ header {
 	padding-top: 1rem;
 }
 
+nav {
+	margin-top: 1rem;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 0.5rem;
+}
+
+nav a,
+nav a:visited {
+	--fg: black;
+	--bg: white;
+	--border: black;
+
+	background-color: var(--bg);
+	border: solid 2px var(--border);
+	color: var(--fg);
+	display: block;
+	padding: 0.25rem 1rem;
+	text-decoration: none;
+}
+
+nav a:hover {
+	--fg: white;
+	--bg: black;
+}
+
+nav a:focus {
+	box-shadow: inset 0 0 0 2px var(--fg);
+}
+
+nav a:active {
+	--fg: white;
+	--bg: black;
+
+	box-shadow: inset 0 0 0 2px var(--fg);
+}
+
+nav a[aria-current] {
+	--fg: white;
+	--bg: black;
+}
+
+nav a[aria-current]:hover,
+nav a[aria-current]:focus {
+	box-shadow: inset 0 0 0 2px var(--fg);
+}
+
+nav li:first-child a {
+	margin-left: 0;
+}
+
 fieldset {
 	border: solid 2px black;
 	padding: 0.5rem 1rem 1rem;
@@ -35,15 +88,31 @@ select {
 	display: block;
 	margin-top: 0.5rem;
 }
+[type="checkbox"] {
+	display: inline-block;
+}
+
+form * + * {
+	margin-top: 1.5rem;
+}
 
 fieldset * + * {
 	margin-top: 1.5rem;
 }
 
-fieldset legend + * {
+legend + * {
 	margin-top: 1rem;
 }
 
+label + * {
+	margin-top: 0.5rem;
+}
+
+fieldset li + li {
+	margin-top: 0;
+}
+
+button,
 [type="submit"] {
 	--fg: black;
 	--bg: white;
@@ -58,19 +127,27 @@ fieldset legend + * {
 	padding: 0.25rem 1rem;
 }
 
+* + button {
+	margin-top: 1rem;
+}
+
+button::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
 	border: 0;
 }
 
+button:hover,
 [type="submit"]:hover {
 	--fg: white;
 	--bg: black;
 }
 
+button:focus,
 [type="submit"]:focus {
 	box-shadow: inset 0 0 0 2px var(--fg);
 }
 
+button:active,
 [type="submit"]:active {
 	--fg: white;
 	--bg: black;
@@ -78,6 +155,7 @@ fieldset legend + * {
 	box-shadow: inset 0 0 0 2px var(--fg);
 }
 
+button[disabled],
 [type="submit"][disabled] {
 	--fg: #555;
 	--border: #555;
@@ -85,6 +163,7 @@ fieldset legend + * {
 	cursor: auto;
 }
 
+button[disabled]:hover,
 [type="submit"][disabled]:hover {
 	--fg: #555;
 	--bg: white;
@@ -141,6 +220,7 @@ fieldset legend + * {
 	color: #fff;
 	display: block;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 @media screen and (min-width: 1024px) {
@@ -151,4 +231,8 @@ fieldset legend + * {
 		transform: rotate(-45deg);
 		width: 20rem;
 	}
+}
+
+.saved-searches > li {
+	margin-top: 1rem;
 }
